@@ -1,0 +1,8 @@
+export const E2E_TEST_IDS = {
+  WELCOME: {
+    PROFILES_BUTTON: 'PROFILES_BUTTON'
+  },
+  PROFILES: {
+    SEARCH_BAR: 'SEARCH_BAR'
+  }
+}

@@ -1,0 +1,28 @@
+image: node:10.13.0
+
+pipelines:
+  branches:
+    feature/ci-cd:
+      - step:
+          name: Prepearing
+          caches:
+            - node
+          script:
+            - yarn install
+            - yarn global add expo
+      - step:
+          name: Test
+          caches:
+            - node
+          script:
+            - yarn test:lint
+          artifacts:
+            - node_modules/**
+      - step:
+          name: Deploy to expo
+          trigger: manual
+          caches:
+            - node
+          script:
+            - yarn expo login --username $EXPO_USERNAME --password $EXPO_PASSWORD
+            - yarn expo publish
